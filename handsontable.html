@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Handsontable Example</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css"
+    />
+
+    <style>
+      .hot-display-license-info {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="hot"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var container = document.getElementById("hot");
+        var hot = new Handsontable(container, {
+          data: [
+            ["John", 25, "USA"],
+            ["Jane", 30, "UK"],
+            ["Bob", 35, "Canada"],
+          ],
+          colHeaders: ["Name", "Age", "Country"],
+          rowHeaders: true,
+          afterOnCellMouseDown: function (event, coords, TD) {
+            var row = coords.row; // Get the row index
+            var col = coords.col; // Get the column index
+            var rowData = hot.getDataAtRow(row); // Get the data of the clicked row
+            var cellData = hot.getDataAtCell(row, col); // Get the data of the clicked cell
+
+            console.log("Clicked row:", row);
+            console.log("Clicked column:", col);
+            console.log("Row data:", rowData);
+            console.log("Cell data:", cellData);
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
