@@ -12,60 +12,19 @@
 
     <div id="box1">Box 1</div>
 
-    <div class="boxes">Baris pertama</div>
-    <div class="boxes">Baris kedua</div>
-    <div class="boxes">Baris kedua koma lima</div>
-    <div class="boxes">Baris ketiga</div>
-    <div class="boxes">Baris keempat</div>
+    <div id="boxes-wrap">
+        <div class="boxes">Baris pertama</div>
+        <div class="boxes">Baris kedua</div>
+        <div class="boxes">Baris kedua koma lima</div>
+        <div class="boxes">Baris ketiga</div>
+        <div class="boxes">Baris keempat</div>
+    </div>
 
     <form action="">
         <input type="text" id="inputText">
         <input type="submit">
     </form>
 
-    <script>
-        // memastikan file sudah di load dengan sempurna
-        $(document).ready(function() {
-            // =======SELECTION=======
-            // $('h1').css('color', 'red');
-            // $('#box1').css('color', 'blue');
-            // $('.boxes').css('color', 'blue');
-                     
-            // $('.boxes:first').css('color', 'red');
-            // $('.boxes:last').css('color', 'green');
-
-            // // :eq(2) adalah pseudo-selektor yang memilih elemen di indeks ke-2 dalam kumpulan elemen yang dipilih
-            // $('.boxes:eq(2)').css('color', 'red');
-
-
-            // =======EVENT=======
-            $('h1').click(function(){
-                $('h1').css('color', 'blue');
-            });
-
-            $('h1').mouseenter(function(){
-                $('h1').css('color', 'yellow');
-            });
-
-            $('h1').mouseleave(function(){
-                $('h1').css('color', 'green');
-            });
-
-            $('.boxes').mouseenter(function(){
-                // fungsi this sebagai merujuk kepada element yg di pilih(mouseenter)
-                $(this).css('color', 'yellow');
-            });
-            
-
-            // =======GET & SET NILAI=======
-            $('form').submit(function() {
-                let tulisan = $('#inputText').val();
-                $('h1').text(tulisan);
-
-                // handle sifat
-                event.preventDefault();
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
