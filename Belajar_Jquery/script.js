@@ -72,6 +72,12 @@ $(document).ready(function() {
     // remove() untuk menghapus semua isi element beserta tag htmlnya
     // $('#boxes-wrap').remove();
     // empty() untuk menghapus isi element saja
-    $('#boxes-wrap').empty();
+    // $('#boxes-wrap').empty();
+
+
+    // =======DIMENSI=======
+    // width() & height = mendapatkan nilai lebar&tinggi dari suatu element
+    let boxValue = $('#boxes-wrap').height();
+    $('#box-wrap-value').text(boxValue);
 
 });
