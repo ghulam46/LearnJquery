@@ -14,7 +14,12 @@ $(document).ready(function() {
 
     // =======EVENT=======
     $('h1').click(function(){
-        $('h1').css('color', 'blue');
+        $('h1').css({
+            'color': 'blue',
+            'fontSize' : '30px',
+            'backgroundColor' : 'grey',
+            'width' : '200px'
+        });   
     });
 
     $('h1').mouseenter(function(){
