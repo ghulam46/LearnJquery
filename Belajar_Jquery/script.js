@@ -22,7 +22,13 @@ $(document).ready(function() {
         // });
 
         // addClass() untuk menambahkan class di tag html dari script css
-        $('h1').addClass('change');  
+        // $('h1').addClass('change');  
+
+        // removeClass() untuk menghapus class di tag html
+        // $('h1').removeClass('change');  
+
+        // toggleClass() gabungan dari menambahkan dan menghapus class di tag html
+        $('h1').toggleClass('change');  
     });
 
     $('h1').mouseenter(function(){
