@@ -76,8 +76,15 @@ $(document).ready(function() {
 
 
     // =======DIMENSI=======
-    // width() & height = mendapatkan nilai lebar&tinggi dari suatu element
-    let boxValue = $('#boxes-wrap').height();
+    // width() & height untuk mendapatkan nilai lebar&tinggi dari suatu element
+    // let boxValue = $('#boxes-wrap').height();
+
+    // innerWidth() & innerHeight() untuk mendapatkan lebar/tinggi bagian dalam (nilai width/height + padding)
+    // let boxValue = $('#boxes-wrap').innerHeight();
+
+    // outerWidth() & outerHeight() untuk mendapatkan lebar/tinggi bagian luar (nilai width/height + padding + border)
+    // (true) -> + nilai margin 
+    let boxValue = $('#boxes-wrap').outerHeight(true);
     $('#box-wrap-value').text(boxValue);
 
 });
