@@ -104,20 +104,33 @@ $(document).ready(function() {
     // });
 
     // fadeIn - fadeOut - fadeTo(time, opacity), fadeToggle
-    $('#btn1').click(function() {
-        $('#box1').fadeIn(1000);
-    });
+    // $('#btn1').click(function() {
+    //     $('#box1').fadeIn(1000);
+    // });
     
-    $('#btn2').click(function() {
-        $('#box1').fadeOut(1000);
-    });
+    // $('#btn2').click(function() {
+    //     $('#box1').fadeOut(1000);
+    // });
 
     // $('#btn3').click(function() {
     //     $('#box1').fadeToggle();
     // });
 
+    // $('#btn3').click(function() {
+    //     $('#box1').fadeTo(1000, 0.5);
+    // });
+
+    // slideUp - slideDown - slideToggle
+    $('#btn1').click(function() {
+        $('#box1').slideDown(1000);
+    });
+    
+    $('#btn2').click(function() {
+        $('#box1').slideUp(1000);
+    });
+
     $('#btn3').click(function() {
-        $('#box1').fadeTo(1000, 0.5);
+        $('#box1').slideToggle();
     });
 
 });
