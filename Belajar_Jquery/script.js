@@ -91,19 +91,33 @@ $(document).ready(function() {
 
     // animasi.html js
     // hide - show - toggle
+    // $('#btn1').click(function() {
+    //     $('#box1').show();
+    // });
+    
+    // $('#btn2').click(function() {
+    //     $('#box1').hide();
+    // });
+
+    // $('#btn3').click(function() {
+    //     $('#box1').toggle();
+    // });
+
+    // fadeIn - fadeOut - fadeTo(time, opacity), fadeToggle
     $('#btn1').click(function() {
-        $('#box1').show();
+        $('#box1').fadeIn(1000);
     });
     
     $('#btn2').click(function() {
-        $('#box1').hide();
+        $('#box1').fadeOut(1000);
     });
+
+    // $('#btn3').click(function() {
+    //     $('#box1').fadeToggle();
+    // });
 
     $('#btn3').click(function() {
-        $('#box1').toggle();
+        $('#box1').fadeTo(1000, 0.5);
     });
-
-    // fadeIn - fadeOut - fadeTo(time, opacity), fadeToggle
-
 
 });
