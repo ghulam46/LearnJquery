@@ -88,4 +88,22 @@ $(document).ready(function() {
     let boxValue = $('#boxes-wrap').height(140).width(120).outerHeight(true);
     $('#box-wrap-value').text(boxValue);
 
+
+    // animasi.html js
+    // hide - show - toggle
+    $('#btn1').click(function() {
+        $('#box1').show();
+    });
+    
+    $('#btn2').click(function() {
+        $('#box1').hide();
+    });
+
+    $('#btn3').click(function() {
+        $('#box1').toggle();
+    });
+
+    // fadeIn - fadeOut - fadeTo(time, opacity), fadeToggle
+
+
 });
