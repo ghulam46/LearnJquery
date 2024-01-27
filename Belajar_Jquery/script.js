@@ -84,7 +84,8 @@ $(document).ready(function() {
 
     // outerWidth() & outerHeight() untuk mendapatkan lebar/tinggi bagian luar (nilai width/height + padding + border)
     // (true) -> + nilai margin 
-    let boxValue = $('#boxes-wrap').outerHeight(true);
+    // let boxValue = $('#boxes-wrap').outerHeight(true);
+    let boxValue = $('#boxes-wrap').height(140).width(120).outerHeight(true);
     $('#box-wrap-value').text(boxValue);
 
 });
