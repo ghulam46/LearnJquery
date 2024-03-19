@@ -23,6 +23,13 @@ function getProductsUrl(keyword) {
 function getProducts(keyword) {
     // Code AJAX Here!
     const ajax = new XMLHttpRequest();
+
+    ajax.onload = function() {
+        const data = JSON.parse(ajax.responseText);
+        clearProducts();
+        displayProducts(data);
+    }
+
     const url = getProductsUrl(keyword);
     ajax.open("GET", url);
     ajax.send();
@@ -46,9 +53,10 @@ function displayProduct(product) {
     productLi.textContent = product.name;
 
     const productUl = document.getElementById("products");
-    productUl.appendChild(productLis);
+    productUl.appendChild(productLi);
 }
 
 function buttonAjax() {
     getProducts(document.getElementById("keyword").value);
+    console.log('success button click');
 }
