@@ -121,16 +121,25 @@ $(document).ready(function() {
     // });
 
     // slideUp - slideDown - slideToggle
+    // stop, callback, chaining
     $('#btn1').click(function() {
-        $('#box1').slideDown(1000);
+        $('#box1').slideDown(1000, munculAlert); // callback function
     });
+
+    function munculAlert() {
+        alert('selesai');
+    }
     
     $('#btn2').click(function() {
-        $('#box1').slideUp(1000);
+        $('#box1').slideUp(1000).fadeIn(2000).fadeTo(2000, 0.5);
     });
 
     $('#btn3').click(function() {
         $('#box1').slideToggle();
+    });
+
+    $('#btn4').click(function() {
+        $('#box1').stop();
     });
 
 });
