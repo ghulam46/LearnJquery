@@ -20,17 +20,19 @@ function getProductsUrl(keyword) {
     return `https://www.blibli.com/backend/search/products?searchTerm=${keyword}`;
 }
 
-function getProducts(keyword) {
+// menambahkan 2 param
+function getProducts(keyword, callbackSuccess, callbackError) {
     // Code AJAX Here!
     const ajax = new XMLHttpRequest();
 
     ajax.onload = function() {
         if(ajax.status === 200) {
             const data = JSON.parse(ajax.responseText);
-            clearProducts();
-            displayProducts(data);
+            // panggila param2
+            callbackSuccess(data);
         } else {
-            getProductsError();
+            // panggil param3
+            callbackError();
         }
     } 
 
@@ -53,6 +55,25 @@ function clearProducts() {
     productUl.textContent = "";
 }
 
+function clearTableProducts() {
+    const productUl = document.getElementById('table-products');
+    productUl.textContent = '';
+}
+
+function displayTableProducts(data) {
+    const table = document.createElement('table');
+    table.setAttribute('border', 1);
+
+    let index = 0;
+    data.data.products.forEach(product => {
+        table.insertRow(index).insertCell(0).innerText = product.name;
+        index++;
+    });
+
+    const tableProduct = document.getElementById('table-products');
+    tableProduct.appendChild(table);
+}
+
 function displayProducts(data) {
     data.data.products.forEach(product => displayProduct(product));
 }
@@ -66,6 +87,23 @@ function displayProduct(product) {
 }
 
 function buttonAjax() {
-    getProducts(document.getElementById("keyword").value);
+    // ini buat display product list
+    // ada 3 parameter keyword, callbackSuccess, callbackError
+    getProducts(document.getElementById("keyword").value, (data) => {
+        clearProducts();
+        displayProducts(data);
+    }, () => {
+        getProductsError();
+    });
+
+    // ini buat display product table
+    // ada 3 parameter keyword, callbackSuccess, callbackError
+    getProducts(document.getElementById("keyword").value, (data) => {
+        clearTableProducts();
+        displayTableProducts(data);
+    }, () => {
+        getProductsError();
+    });
+
     console.log('success button click');
 }
