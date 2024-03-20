@@ -25,10 +25,14 @@ function getProducts(keyword) {
     const ajax = new XMLHttpRequest();
 
     ajax.onload = function() {
-        const data = JSON.parse(ajax.responseText);
-        clearProducts();
-        displayProducts(data);
-    }
+        if(ajax.status === 200) {
+            const data = JSON.parse(ajax.responseText);
+            clearProducts();
+            displayProducts(data);
+        } else {
+            getProductsError();
+        }
+    } 
 
     const url = getProductsUrl(keyword);
     ajax.open("GET", url);
@@ -37,6 +41,11 @@ function getProducts(keyword) {
     // tidak bisa dilakukan secara sync
     // const response = JSON.parse(ajax.responseText);
     // console.log(response)
+}
+
+function getProductsError() {
+    console.log('Error get products');
+    alert('Error get products');
 }
 
 function clearProducts() {
