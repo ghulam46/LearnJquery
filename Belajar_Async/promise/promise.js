@@ -48,8 +48,12 @@ function buttonPromise() {
             return value.data.products;
         })
         .then((products) => {
+            clearProducts();
             products.forEach((product) => {
                 displayProduct(product);
             });
+        })
+        .catch((error) => {
+            alert(error.message);
         })
 }
