@@ -5,10 +5,24 @@ function getProductsUrl(keyword) {
 
 function getProducts(keyword) {
     // Code AJAX Here!
-    const ajax = new XMLHttpRequest();
-    const url = getProductsUrl(keyword);
-    ajax.open("GET", url);
-    ajax.send();
+
+    const promise = new Promise((resolve, reject) => {
+        const ajax = new XMLHttpRequest();
+        ajax.onload = function() {
+            if(ajax.status === 200) {
+                const data = JSON.parse(ajax.responseText);
+                resolve(data);
+            } else {
+                reject(Error("Data product gagal dimuat"));
+            }
+        } 
+    
+        const url = getProductsUrl(keyword);
+        ajax.open("GET", url);
+        ajax.send();
+    });
+
+    return promise;
 }
 
 function clearProducts() {
@@ -29,5 +43,6 @@ function displayProduct(product) {
 }
 
 function buttonPromise() {
-    getProducts(document.getElementById("keyword").value);
+    const promise = getProducts(document.getElementById("keyword").value);
+    console.log(promise);
 }
