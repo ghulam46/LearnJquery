@@ -39,10 +39,17 @@ function displayProduct(product) {
     productLi.textContent = product.name;
 
     const productUl = document.getElementById("products");
-    productUl.appendChild(productLis);
+    productUl.appendChild(productLi);
 }
 
 function buttonPromise() {
-    const promise = getProducts(document.getElementById("keyword").value);
-    console.log(promise);
+    getProducts(document.getElementById("keyword").value)
+        .then((value) => {
+            return value.data.products;
+        })
+        .then((products) => {
+            products.forEach((product) => {
+                displayProduct(product);
+            });
+        })
 }
