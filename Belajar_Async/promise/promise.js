@@ -56,4 +56,7 @@ function buttonPromise() {
         .catch((error) => {
             alert(error.message);
         })
+        .finally(() => {
+            console.log("Selesai memproses Promise");
+        })
 }
