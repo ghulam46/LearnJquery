@@ -43,20 +43,43 @@ function displayProduct(product) {
 }
 
 function buttonPromise() {
-    getProducts(document.getElementById("keyword").value)
-        .then((value) => {
-            return value.data.products;
+    // getProducts(document.getElementById("keyword").value)
+    //     .then((value) => {
+    //         return value.data.products;
+    //     })
+    //     .then((products) => {
+    //         clearProducts();
+    //         products.forEach((product) => {
+    //             displayProduct(product);
+    //         });
+    //     })
+    //     .catch((error) => {
+    //         alert(error.message);
+    //     })
+    //     .finally(() => {
+    //         console.log("Selesai memproses Promise");
+    //     })
+
+    const promise1 = getProducts(document.getElementById("keyword").value);
+    const promise2 = getProducts(document.getElementById("keyword2").value);
+    const promise3 = getProducts(document.getElementById("keyword3").value);
+
+    Promise.all([promise1, promise2, promise3])
+        .then((values) => {
+            return values.map(value => value.data.products)
         })
-        .then((products) => {
+        .then((values) => {
             clearProducts();
-            products.forEach((product) => {
-                displayProduct(product);
+            values.forEach((products) => {
+                products.forEach((product) => {
+                    displayProduct(product);
+                })
             });
         })
         .catch((error) => {
             alert(error.message);
         })
         .finally(() => {
-            console.log("Selesai memproses Promise");
+            console.log('Selesai memproses semua Promise');
         })
 }
