@@ -36,6 +36,10 @@ function displayProduct(product) {
     productUl.appendChild(productLi);
 }
 
+function handleError(err) {
+    console.log('Whoops!, ' + err + ' Get request API');
+}
+
 // async await bekerja secara asyncronous tetapi cara coding syncronous
 async function buttonAjax() {
     // BEFORE
@@ -56,18 +60,29 @@ async function buttonAjax() {
     //         console.log("Selesai memproses Promise");
     //     });
 
-    // AFTER
-    // coding syncronous tapi hasilnya asyncronous
-    try {
-        const value = await getProducts(document.getElementById("keyword").value)
-        const products = value.data.products;
+    // handling error with try...catch
+    // try {
+    //     // AFTER
+    //     // coding syncronous tapi hasilnya asyncronous
+    //     const value = await getProducts(document.getElementById("keyword").value)
+    //     const products = value.data.products;
         
-        clearProducts();
-        products.forEach((product) => {
-            displayProduct(product);
-        });
-    } catch(err) {
-        console.log('ohhh no!');
-        console.log(err + ' Request API');
-    }
+    //     clearProducts();
+    //     products.forEach((product) => {
+    //         displayProduct(product);
+    //     });
+    // } catch(err) {
+    //     console.log('ohhh no!');
+    //     console.log(err + ' Get request API');
+    // }
+
+    // handling error with chaining .catch(function_name)
+    // create new function handleError()
+    const value = await getProducts(document.getElementById("keyword").value).catch(handleError)
+    const products = value.data.products;
+    
+    clearProducts();
+    products.forEach((product) => {
+        displayProduct(product);
+    });
 }
