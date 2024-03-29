@@ -1,5 +1,5 @@
 function getProductsUrl(keyword) {
-    return `https://www.blibli.com/backend/search/products?searchTerm=${keyword}`;
+    return `https://www.blibli.com/backend/search/salah?searchTerm=${keyword}`;
 }
 
 function getProducts(keyword) {
@@ -58,11 +58,16 @@ async function buttonAjax() {
 
     // AFTER
     // coding syncronous tapi hasilnya asyncronous
-    const value = await getProducts(document.getElementById("keyword").value)
-    const products = value.data.products;
-
-    clearProducts();
-    products.forEach((product) => {
-        displayProduct(product);
-    });
+    try {
+        const value = await getProducts(document.getElementById("keyword").value)
+        const products = value.data.products;
+        
+        clearProducts();
+        products.forEach((product) => {
+            displayProduct(product);
+        });
+    } catch(err) {
+        console.log('ohhh no!');
+        console.log(err + ' Request API');
+    }
 }
