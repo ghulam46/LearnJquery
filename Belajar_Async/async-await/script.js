@@ -10,7 +10,7 @@ function getProducts(keyword) {
                 const data = JSON.parse(ajax.responseText);
                 resolve(data);
             } else {
-                reject(Error(ajax.statusText));
+                reject(Error("Error get data product"));
             }
         }
 
@@ -61,28 +61,30 @@ async function buttonAjax() {
     //     });
 
     // handling error with try...catch
-    // try {
-    //     // AFTER
-    //     // coding syncronous tapi hasilnya asyncronous
-    //     const value = await getProducts(document.getElementById("keyword").value)
-    //     const products = value.data.products;
+    try {
+        // AFTER
+        // coding syncronous tapi hasilnya asyncronous
+        const value = await getProducts(document.getElementById("keyword").value)
+        const products = value.data.products;
         
-    //     clearProducts();
-    //     products.forEach((product) => {
-    //         displayProduct(product);
-    //     });
-    // } catch(err) {
-    //     console.log('ohhh no!');
-    //     console.log(err + ' Get request API');
-    // }
+        clearProducts();
+        products.forEach((product) => {
+            displayProduct(product);
+        });
+    } catch(err) {
+        console.log('ohhh no!');
+        console.log(err.message);
+    } finally {
+        console.log('Already finish processing data product...');
+    }
 
     // handling error with chaining .catch(function_name)
     // create new function handleError()
-    const value = await getProducts(document.getElementById("keyword").value).catch(handleError)
-    const products = value.data.products;
+    // const value = await getProducts(document.getElementById("keyword").value).catch(handleError)
+    // const products = value.data.products;
     
-    clearProducts();
-    products.forEach((product) => {
-        displayProduct(product);
-    });
+    // clearProducts();
+    // products.forEach((product) => {
+    //     displayProduct(product);
+    // });
 }
